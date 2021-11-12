@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using api_sena.Models;
 
 namespace api_sena.Controllers
 {
@@ -7,8 +8,13 @@ namespace api_sena.Controllers
     [Route("customers")]
     public class CustomersController : ControllerBase
     {
-        [HttpGet(Name = "GetCustomers")]
-        public IEnumerable<Customers> Get() {
+        [HttpGet("{id}")]
+        public IActionResult<Customers> GetOne(string id) {
+            continue;
+        }
+
+        [HttpGet]
+        public IActionResult<IEnumerable<Customers>> GetAll() {
             return new List<Customers>() {
                 new Customers {
                     Uid = "ASDASDASD",
@@ -19,9 +25,9 @@ namespace api_sena.Controllers
             };
         }
 
-        [HttpPost(Name = "CreateCustomers")]
-        public void Create() {
-
+        [HttpPost]
+        public IActionResult Create(Customers customer) {
+            continue;
         }
     }
 }
