@@ -1,4 +1,3 @@
-using System;
 using Dapper;
 using api_sena.Models;
 

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using api_sena.Models;
 using api_sena.Services;
 
 namespace api_sena.Controllers

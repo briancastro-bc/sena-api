@@ -7,11 +7,9 @@ namespace api_sena.Models
     {
 
         public MySqlConnection connection;
-        private MySqlDataReader reader;
 
         public Database() {
             this.connection = new MySqlConnection("datasource=localhost;port=3306;username=bcode;password=12345;database=db_api_sena;");
-            this.reader = null!;
         }
 
         public bool OpenConnection() {
@@ -34,49 +32,6 @@ namespace api_sena.Models
                 Console.WriteLine($"Error: {e}");
             }
             return false;
-        }
-
-        public void FetchAll(string sql) {
-            try {
-                using(MySqlCommand cursor = new MySqlCommand(sql, this.connection)) {
-                    this.OpenConnection();
-                    using(MySqlDataReader reader = cursor.ExecuteReader()) {
-                    }
-                }
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-            } finally {
-                this.CloseConnection();
-            }
-        }
-
-        public MySqlDataReader FetchOne(string sql) {
-            try {
-                using(MySqlCommand cursor = new MySqlCommand(sql, this.connection)) {
-                    this.OpenConnection();
-                    using(MySqlDataReader reader = cursor.ExecuteReader()) {
-                        return this.reader;
-                    }
-                }
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-                return null!;
-            } finally {
-                this.CloseConnection();
-            }
-        }
-
-        public void ExecuteQuery(string sql) {
-            try {
-                using(MySqlCommand cursor = new MySqlCommand(sql, this.connection)) {
-                    this.OpenConnection();
-                    this.reader = cursor.ExecuteReader();
-                }
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-            } finally {
-                this.CloseConnection();
-            }
         }
 
         public bool CloseConnection() {

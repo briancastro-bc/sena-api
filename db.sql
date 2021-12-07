@@ -1,5 +1,14 @@
-CREATE SCHEMA db_api_sena;
+CREATE SCHEMA IF NOT EXISTS db_api_sena;
 USE db_api_sena;
+
+CREATE TABLE IF NOT EXISTS users(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name CHAR(40) NOT NULL,
+    lastName CHAR(50) NOT NULL,
+    email VARCHAR(80) NOT NULL UNIQUE,
+    password VARCHAR(450) NOT NULL,
+    cellphoneNumber CHAR(15) NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS customers(
     uid VARCHAR(36) NOT NULL PRIMARY KEY,
